@@ -22,14 +22,16 @@ const printManager = () => {
 
 // Appending engineer information to team.txt
 const printEngineer = () => {
-  fs.appendFile('team.txt', "Name: "+ JSON.stringify(engineerArray[0].name) + "\n" + "ID: " + engineerArray.id + "\n" + "Title: " + engineerArray.title + "\n" + "E-Mail: " + engineerArray.email + "\n" + "GitHub: " + engineerArray.gitHub + "\n---------------------------------\n", function (err) {
+  fs.appendFile('team.txt', "Name: "+ JSON.stringify(engineerArray[0].name) + "\n" + "ID: " + JSON.stringify(engineerArray[0].id) + "\n" + "Title: " + JSON.stringify(engineerArray[0]).title + "\n" + "E-Mail: " + JSON.stringify(engineerArray[0].email) + "\n" + "GitHub: " + JSON.stringify(engineerArray[0].gitHub) + "\n---------------------------------\n", 
+  function (err) {
     if (err) throw err;
   });
 }
 
 // Appending intern information to team.txt
 const printIntern = () => {
-  fs.appendFile('team.txt', JSON.stringify(internArray) + + "\n---------------------------------\n", function (err) {
+  fs.appendFile('team.txt', "Name: "+ JSON.stringify(internArray[0].name) + "\n" + "ID: " + JSON.stringify(internArray[0].id) + "\n" + "Title: " + JSON.stringify(internArray[0]).title + "\n" + "E-Mail: " + JSON.stringify(internArray[0].email) + "\n" + "School: " + JSON.stringify(internArray[0].school) + "\n---------------------------------\n", 
+  function (err) {
     if (err) throw err;
   });
 }
