@@ -1,6 +1,6 @@
 // Employees class
-class Employees{
-  constructor(name, id, email){
+class Employees {
+  constructor(name, id, email) {
     this.name = name;
     this.id = id;
     this.title = "Employee";
@@ -13,64 +13,65 @@ class Employees{
   }
 
   // Function to return ID number of employee
-  getId(){
+  getId() {
     return this.id;
   }
 
   // Function to return email of employee
-  getEmail(){
+  getEmail() {
     return this.email;
   }
 
   // Function to return title of employee
-  getTitle (){
+  getTitle() {
     return this.title;
   }
 }
 
 // Manager subclass
-class Manager extends Employees{
+class Manager extends Employees {
   constructor(name, id, email, officeNumber) {
-  // Super pulls from the employees class
-  super(name, id, email);
-  this.title = "Manager"
-  this.officeNumber = officeNumber;
+    // Super pulls from the employees class
+    super(name, id, email);
+    this.title = "Manager"
+    this.officeNumber = officeNumber;
   }
 
   // Function to return office number
-  getOfficeNumber(){
+  getOfficeNumber() {
     return this.officeNumber;
   }
 }
 
 // Engineer subclass
-class Engineer extends Employees{
+class Engineer extends Employees {
   constructor(name, id, email, gitHub) {
     // Super pulls from the employees class
     super(name, id, email);
     this.title = "Engineer";
     this.gitHub = gitHub;
   }
-  
+
   // Function to return GitHub username
-  getGitHub(){
+  getGitHub() {
     return this.gitHub;
   }
 }
 
 // Intern subclass
-class Intern extends Employees{
-  constructor(name, id, email, school){
-  // Super pulls from the employees class
-  super(name, id, email);
-  this.title = "Intern";
-  this.school = school;
+class Intern extends Employees {
+  constructor(name, id, email, school) {
+    // Super pulls from the employees class
+    super(name, id, email);
+    this.title = "Intern";
+    this.school = school;
   }
 
   // Function to return Intern's school
-  getSchool(){
+  getSchool() {
     return this.school;
   }
 }
 
-module.exports = {Employees, Manager, Engineer, Intern} ;
+// Exporting classes
+module.exports = { Employees, Manager, Engineer, Intern };
