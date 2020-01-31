@@ -2,8 +2,6 @@ const inquirer = require("inquirer");
 const employees = require("./employees");
 const fs = require("fs");
 
-let testEmployee = new employees.Manager("Gary", "001", "GaryTAlmes@Gmail.com", "666");
-
 // Storing Manager info
 let manager;
 
