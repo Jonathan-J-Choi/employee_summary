@@ -17,7 +17,7 @@ const printManager = () => {
     "Team" +
     "\n=================================\n" +
     "Name: " + manager.name + "\n" +
-    "ID: " + manager.id + "\n" +
+    "ID Number: " + manager.id + "\n" +
     "Title: " + manager.title + "\n" +
     "E-Mail: " + manager.email + "\n" +
     "Office Number: " + manager.officeNumber +
@@ -31,7 +31,7 @@ const printManager = () => {
 const printEngineer = () => {
   fs.appendFile('team.txt',
     "Name: " + engineerArray[0].name + "\n" +
-    "ID: " + engineerArray[0].id + "\n" +
+    "ID Number: " + engineerArray[0].id + "\n" +
     "Title: " + engineerArray[0].title + "\n" +
     "E-Mail: " + engineerArray[0].email + "\n" +
     "GitHub: " + engineerArray[0].gitHub +
@@ -45,7 +45,7 @@ const printEngineer = () => {
 const printIntern = () => {
   fs.appendFile('team.txt',
     "Name: " + internArray[0].name + "\n" +
-    "ID: " + internArray[0].id + "\n" +
+    "ID Number: " + internArray[0].id + "\n" +
     "Title: " + internArray[0].title + "\n" +
     "E-Mail: " + internArray[0].email + "\n" +
     "School: " + internArray[0].school +
