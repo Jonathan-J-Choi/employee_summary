@@ -13,14 +13,29 @@ let internArray = [];
 
 // Creating and printing manager information to team.txt
 const printManager = () => {
-  fs.appendFile('team.txt', "Team" + "\n=================================\n" + "Name: " + manager.name + "\n" + "ID: " + manager.id + "\n" + "Title: " + manager.title + "\n" + "E-Mail: " + manager.email + "\n" + "Office Number: " + manager.officeNumber + "\n---------------------------------\n", function (err) {
-    if (err) throw err;
-  });
+  fs.appendFile('team.txt',
+    "Team" +
+    "\n=================================\n" +
+    "Name: " + manager.name + "\n" +
+    "ID: " + manager.id + "\n" +
+    "Title: " + manager.title + "\n" +
+    "E-Mail: " + manager.email + "\n" +
+    "Office Number: " + manager.officeNumber +
+    "\n---------------------------------\n",
+    function (err) {
+      if (err) throw err;
+    });
 }
 
 // Appending engineer information to team.txt
 const printEngineer = () => {
-  fs.appendFile('team.txt', "Name: " + JSON.stringify(engineerArray[0].name) + "\n" + "ID: " + JSON.stringify(engineerArray[0].id) + "\n" + "Title: " + JSON.stringify(engineerArray[0]).title + "\n" + "E-Mail: " + JSON.stringify(engineerArray[0].email) + "\n" + "GitHub: " + JSON.stringify(engineerArray[0].gitHub) + "\n---------------------------------\n",
+  fs.appendFile('team.txt',
+    "Name: " + engineerArray[0].name + "\n" +
+    "ID: " + engineerArray[0].id + "\n" +
+    "Title: " + engineerArray[0].title + "\n" +
+    "E-Mail: " + engineerArray[0].email + "\n" +
+    "GitHub: " + engineerArray[0].gitHub +
+    "\n---------------------------------\n",
     function (err) {
       if (err) throw err;
     });
@@ -28,12 +43,19 @@ const printEngineer = () => {
 
 // Appending intern information to team.txt
 const printIntern = () => {
-  fs.appendFile('team.txt', "Name: " + JSON.stringify(internArray[0].name) + "\n" + "ID: " + JSON.stringify(internArray[0].id) + "\n" + "Title: " + JSON.stringify(internArray[0]).title + "\n" + "E-Mail: " + JSON.stringify(internArray[0].email) + "\n" + "School: " + JSON.stringify(internArray[0].school) + "\n---------------------------------\n",
+  fs.appendFile('team.txt',
+    "Name: " + internArray[0].name + "\n" +
+    "ID: " + internArray[0].id + "\n" +
+    "Title: " + internArray[0].title + "\n" +
+    "E-Mail: " + internArray[0].email + "\n" +
+    "School: " + internArray[0].school +
+    "\n---------------------------------\n",
     function (err) {
       if (err) throw err;
     });
 }
 
+// Print the entire team
 const printTeam = () => {
   printEngineer();
   printIntern();
@@ -207,7 +229,7 @@ const addEngineer = () => {
     } else if (resp.addEmployee === "Intern") {
       addIntern();
     } else console.log("Project team assembled."),
-    printTeam();
+      printTeam();
   });
 };
 
