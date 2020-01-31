@@ -27,3 +27,48 @@ class Employees{
     return this.title;
   }
 }
+
+// Manager subclass
+class Manager extends Employees{
+  constructor(name, id, email, officeNumber) {
+  // Super pulls from the employees class
+  super(name, id, email);
+  this.title = "Manager"
+  this.officeNumber = officeNumber;
+  }
+
+  // Function to return office number
+  getOfficeNumber(){
+    return this.officeNumber;
+  }
+}
+
+// Engineer subclass
+class Engineer extends Employee{
+  constructor(name, id, email) {
+    // Super pulls from the employees class
+    super(name, id, email);
+    this.github = github;
+    this.title = "Engineer";
+  }
+  
+  // Function to return GitHub username
+  getGitHub(){
+    return this.github;
+  }
+}
+
+// Intern subclass
+class Intern extends Employee{
+  constructor(name, id, email){
+  // Super pulls from the employees class
+  super(name, id, email);
+  this.school = school;
+  }
+
+  getSchool(){
+    return this.school;
+  }
+}
+
+module.exports = {Employee, Manager, Engineer, Intern} ;
