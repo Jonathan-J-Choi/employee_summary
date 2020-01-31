@@ -44,31 +44,33 @@ class Manager extends Employees{
 }
 
 // Engineer subclass
-class Engineer extends Employee{
-  constructor(name, id, email) {
+class Engineer extends Employees{
+  constructor(name, id, email, gitHub) {
     // Super pulls from the employees class
     super(name, id, email);
-    this.github = github;
     this.title = "Engineer";
+    this.gitHub = gitHub;
   }
   
   // Function to return GitHub username
   getGitHub(){
-    return this.github;
+    return this.gitHub;
   }
 }
 
 // Intern subclass
-class Intern extends Employee{
-  constructor(name, id, email){
+class Intern extends Employees{
+  constructor(name, id, email, school){
   // Super pulls from the employees class
   super(name, id, email);
+  this.title = "Intern";
   this.school = school;
   }
 
+  // Function to return Intern's school
   getSchool(){
     return this.school;
   }
 }
 
-module.exports = {Employee, Manager, Engineer, Intern} ;
+module.exports = {Employees, Manager, Engineer, Intern} ;

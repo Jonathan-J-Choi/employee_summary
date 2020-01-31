@@ -2,26 +2,43 @@ const inquirer = require("inquirer");
 const employees = require("./employees");
 const fs = require("fs");
 
-let testEmployee= new employees.Manager("Gary", "001", "GaryTAlmes@Gmail.com", "666");
+let testEmployee = new employees.Manager("Gary", "001", "GaryTAlmes@Gmail.com", "666");
 
 // Storing Manager info
 let manager;
 
 // Storing Engineer(s) info
 let engineerArray = [];
-// Count starts at zero and will be updated as more are added
-let engineerCount = 0;
 
 // Storing Intern(s) info
-let internArray =[];
-// Count starts at zero and will be updated as more are added
-let internCount = 0;
+let internArray = [];
+
+// Creating and printing manager information to team.txt
+const printManager = () => {
+  fs.appendFile('team.txt',"Team" + "\n=================================\n" + "Name: "+ manager.name + "\n" + "ID: " + manager.id + "\n" + "Title: " + manager.title + "\n" + "E-Mail: " + manager.email + "\n" + "Office Number: " + manager.officeNumber + "\n---------------------------------\n", function (err) {
+    if (err) throw err;
+  });
+}
+
+// Appending engineer information to team.txt
+const printEngineer = () => {
+  fs.appendFile('team.txt', "Name: "+ JSON.stringify(engineerArray[0].name) + "\n" + "ID: " + engineerArray.id + "\n" + "Title: " + engineerArray.title + "\n" + "E-Mail: " + engineerArray.email + "\n" + "GitHub: " + engineerArray.gitHub + "\n---------------------------------\n", function (err) {
+    if (err) throw err;
+  });
+}
+
+// Appending intern information to team.txt
+const printIntern = () => {
+  fs.appendFile('team.txt', JSON.stringify(internArray) + + "\n---------------------------------\n", function (err) {
+    if (err) throw err;
+  });
+}
 
 // Manager confirmation on startup
 const startupQuestion = [
   {
-    type:"confirm",
-    name: "boss",
+    type: "confirm",
+    name: "projectLead",
     message: "Are you ready to build your team for this project?"
   }
 ];
@@ -42,7 +59,7 @@ const managerInfo = [
   },
   // Manager's e-mail address
   {
-    type:"input",
+    type: "input",
     message: "Please enter your e-mail address.",
     name: "email"
   },
@@ -50,11 +67,11 @@ const managerInfo = [
   {
     type: "input",
     message: "What is your office number?",
-    name: "office"
+    name: "officeNumber"
   },
   // Manager's choice of adding other members on project
   {
-    type:"list",
+    type: "list",
     message: "Please choose who to add to your team.",
     choices: ["Engineer", "Intern"],
     name: "addEmployee"
@@ -131,3 +148,88 @@ const internInfo = [
   }
 ];
 
+// Function to start app
+const startup = () => {
+  inquirer.prompt(startupQuestion).then(resp => {
+    if (resp.projectLead === true) {
+      createManager();
+    } else {
+      console.log("You do not have permission to create a new project team.");
+      return;
+    }
+  });
+};
+
+// Create manager function
+const createManager = () => {
+  inquirer.prompt(managerInfo).then(resp => {
+    // Creating manager object based on user input
+    manager = new employees.Manager(
+      resp.name,
+      resp.id,
+      resp.email,
+      resp.officeNumber
+    );
+    console.log(manager);
+    console.log("Initiating project team assembly.");
+    // Initiate function based on manager's choice of employee
+    if (resp.addEmployee === "Engineer") {
+      addEngineer();
+      printManager();
+    } else {
+      addIntern();
+      printManager();
+    }
+  });
+};
+
+// AddEngineer Function
+const addEngineer = () => {
+  inquirer.prompt(engineerInfo).then(resp => {
+    // creating engineer object based on user input
+    let engineer = new employees.Engineer(
+      resp.name,
+      resp.id,
+      resp.email,
+      resp.gitHub
+    );
+    // Adding engineer to array
+    engineerArray.push(engineer);
+    console.log(engineerArray);
+    // Initiate function based on manager's choice of employee
+    if (resp.addEmployee === "Engineer") {
+      addEngineer();
+    } else if (resp.addEmployee === "Intern") {
+      addIntern();
+    } else console.log ("Project team assembled.")
+    printEngineer();
+    printIntern();
+  });
+};
+
+// AddIntern Function
+const addIntern = () => {
+  inquirer.prompt(internInfo).then(resp => {
+    // creating intern object based on user input
+    let intern = new employees.Intern(
+      resp.name,
+      resp.id,
+      resp.email,
+      resp.school
+    );
+    // Adding intern to array
+    internArray.push(intern);
+    console.log (internArray)
+    // Initiate function based on manager's choice of employee
+    if (resp.addEmployee === "Engineer") {
+      addEngineer();
+    } else if (resp.addEmployee === "Intern") {
+      addIntern();
+    } else console.log ("Project team assembled.")
+    printEngineer();
+    printIntern();
+
+  });
+};
+
+startup();
