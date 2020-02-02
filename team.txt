@@ -1,0 +1,20 @@
+Team
+=================================
+Name: jonathan
+ID Number: 1
+Title: Manager
+E-Mail: jon@jon.com
+Office Number: 69
+---------------------------------
+Name: Dan
+ID Number: 2
+Title: Engineer
+E-Mail: dan@dan.com
+GitHub: dandan
+---------------------------------
+Name: Erik
+ID Number: 2
+Title: Intern
+E-Mail: erik@erik.com
+School: erik university
+---------------------------------

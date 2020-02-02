@@ -13,7 +13,7 @@ let internArray = [];
 
 // Creating and printing manager information to team.txt
 const printManager = () => {
-  fs.createFile('team.txt',
+  fs.writeFile('team.txt',
     "Team" +
     "\n=================================\n" +
     "Name: " + manager.name + "\n" +
@@ -222,7 +222,7 @@ const addEngineer = () => {
     );
     // Adding engineer to array
     engineerArray.push(engineer);
-    console.log(engineerArray);
+    // console.log(engineerArray);
     // Initiate function based on manager's choice of employee
     if (resp.addEmployee === "Engineer") {
       addEngineer();
@@ -245,7 +245,7 @@ const addIntern = () => {
     );
     // Adding intern to array
     internArray.push(intern);
-    console.log(internArray)
+    // console.log(internArray)
     // Initiate function based on manager's choice of employee
     if (resp.addEmployee === "Engineer") {
       addEngineer();
