@@ -13,7 +13,7 @@ let internArray = [];
 
 // Creating and printing manager information to team.txt
 const printManager = () => {
-  fs.appendFile('team.txt',
+  fs.createFile('team.txt',
     "Team" +
     "\n=================================\n" +
     "Name: " + manager.name + "\n" +
